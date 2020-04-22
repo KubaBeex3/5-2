@@ -16,14 +16,12 @@ Program powinien mieæ funkcje/procedury.
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <time.h>
+#include <string.h>
 
 void losujx(float arrx[])
 {
-    srand(time(NULL));
     for(int i=0; i<50; i++) {
         arrx[i]=((double)rand()/(double)RAND_MAX) * 10.0;
-        printf("%.5f, ", arrx[i]);
     }
     return;
 }
@@ -32,7 +30,6 @@ void losujy(float arry[])
 {
     for(int i=0; i<50; i++) {
         arry[i]=10+((double)rand()/(double)RAND_MAX) * 40.0;
-        printf("%.5f, ", arry[i]);
     }
     return;
 }
@@ -41,7 +38,6 @@ void losujrho(float arrrho[])
 {
     for(int i=0; i<50; i++) {
         arrrho[i]=2.7+((double)rand()/(double)RAND_MAX) * 0.14;
-        printf("%.5f, ", arrrho[i]);
     }
     return;
 }
@@ -49,33 +45,30 @@ void losujrho(float arrrho[])
 
 int main()
 {
+    srand(time(NULL));
     float arrx[51]= {0.0};
     float arry[51]= {0.0};
     float arrrho[51]= {0.0};
     FILE *plik;
-    printf("IKSY\n");
+    char nazwap[16]="";
+    char nazwak[30]="";
     losujx(arrx);
-    printf("\nIGREKI\n");
     losujy(arry);
-    printf("\nRGOKI\n");
     losujrho(arrrho);
-    //nazwa=(char *)malloc((21)*sizeof(char));
-    plik=fopen("P0001_nazwa_.txt", "w");
-    for(int i=0; i<50; i++)
-        fprintf(plik, "%d. %.5f %.5f %.5f \n", i+1, arrx[i], arry[i], arrrho[i]);
-    plik=fopen("P0002_nazwa_.txt", "w");
-    for(int i=0; i<50; i++)
-        fprintf(plik, "%d. %.5f %.5f %.5f \n", i+1, arrx[i], arry[i], arrrho[i]);
-    plik=fopen("P0003_nazwa_.txt", "w");
-    for(int i=0; i<50; i++)
-        fprintf(plik, "%d. %.5f %.5f %.5f \n", i+1, arrx[i], arry[i], arrrho[i]);
-    plik=fopen("P0004_nazwa_.txt", "w");
-    for(int i=0; i<50; i++)
-        fprintf(plik, "%d. %.5f %.5f %.5f \n", i+1, arrx[i], arry[i], arrrho[i]);
-    plik=fopen("P0005_nazwa_.txt", "w");
-    for(int i=0; i<50; i++)
-        fprintf(plik, "%d. %.5f %.5f %.5f \n", i+1, arrx[i], arry[i], arrrho[i]);
-    //free(nazwa);
-    fclose(plik);
+    printf("Wybierz nazwe dla swojego pliku(do 15 znaków): ");
+    scanf(" %[^\n]s", &nazwap);
+    printf("Zapisano do:\n");
+    for(int i=0; i<5; i++) {
+        snprintf(nazwak,30,"P000%d_", i+1);
+        strcat(nazwak,nazwap);
+        strcat(nazwak,".txt");
+        printf("%s\n", nazwak);
+        plik=fopen(nazwak, "w");
+        fprintf(plik,"LP.\tX\tY\t\tRHO\n");
+        for(int i=0; i<50; i++)
+            fprintf(plik,"%d.\t%.5f\t%.5f\t%.3f\n", i+1,arrx[i],arry[i],arrrho[i]);
+        fclose(plik);
+    }
     return 0;
 }
+
