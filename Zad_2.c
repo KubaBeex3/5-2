@@ -1,0 +1,91 @@
+//2. Napisz program kopiuj¹cy treœæ jednego pliku do drugiego w 2 wariantach - dopisuj¹c do pliku lub nadpisuj¹c plik. Program powinien mieæ funkcje/procedury.
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+
+void tresc()
+{
+    srand(time(NULL));
+    FILE *plik;
+    plik=fopen("ztrescia.txt", "w");
+    int x[31]= {0};
+    int r=30;
+    for(int i=0; i<r; i++) {
+        x[i]=1+rand()%50;
+   //     printf("%d ",x[i]);
+        fprintf(plik, "%d ", x[i]);
+    }
+    fclose(plik);
+    return;
+}
+
+void czytanie(int x[])
+{
+    FILE *plik;
+    plik=fopen("ztrescia.txt", "r");
+    if(plik==NULL)
+        printf("W tym katalogu nie ma takiego pliku\n");
+    else {
+        printf("\n");
+        for(int i=0; i<100; i++) {
+            if(feof(plik))
+                break;
+            else {
+                fscanf(plik, "%d", &x[i]);
+                if(x[i]==0)
+                    break;
+                else
+                printf("Oto %d. liczba %d\n",i+1,x[i]);
+            }
+        }
+    }
+    fclose(plik);
+    return;
+}
+void dopisywanie()
+{
+    FILE *plik;
+    plik=fopen("ztrescia.txt", "a");
+    int x[31]={0};
+    czytanie(x);
+    fprintf(plik, "\n");
+    for(int i=0;i<30;i++)
+    fprintf(plik, "%d ", x[i]);
+    fclose(plik);
+    return;
+}
+
+
+void nadpisywanie()
+{
+    int x[30];
+    FILE *plik;
+    plik=fopen("ztrescia.txt", "w");
+    czytanie(x);
+    for(int i=0;i<30;i++)
+    fprintf(plik, "%d ", x[i]);
+    fclose(plik);
+    return;
+}
+
+int main()
+{
+    int wybor=0;
+    printf("Wybierz co chcesz zrobic z plikiem nadpisac (1), dopisac(2) ");
+    scanf("%d", &wybor);
+    tresc();
+    switch(wybor){
+    case 1:
+    nadpisywanie();
+    break;
+    case 2:
+    dopisywanie();
+    break;
+    default:
+        break;
+    }
+    return 0;
+}
+
