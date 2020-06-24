@@ -1,4 +1,4 @@
-//2. Napisz program kopiuj¹cy treœæ jednego pliku do drugiego w 2 wariantach - dopisuj¹c do pliku lub nadpisuj¹c plik. Program powinien mieæ funkcje/procedury.
+//2. Napisz program kopiujÄ…cy treÅ›Ä‡ jednego pliku do drugiego w 2 wariantach - dopisujÄ…c do pliku lub nadpisujÄ…c plik. Program powinien mieÄ‡ funkcje/procedury.
 
 #include<stdio.h>
 #include<stdlib.h>
