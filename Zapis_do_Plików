@@ -1,6 +1,6 @@
 /*
-1. Napisz program, który pobierze od u¿ytkownika ci¹g znaków i utworzy 5 plików o nazwie wg wzoru P000[1-5] [pobrana nazwa].rec. Np.:
-P0001 attr after denoise.rec, P0002 attr after denoise.rec itd. Nastêpnie wygeneruje i zapisze do nich treœæ. Zawartoœæ plików powinna wygl¹daæ nastêpuj¹co:
+1. Napisz program, ktÃ³ry pobierze od uÅ¼ytkownika ciÄ…g znakÃ³w i utworzy 5 plikÃ³w o nazwie wg wzoru P000[1-5] [pobrana nazwa].rec. Np.:
+P0001 attr after denoise.rec, P0002 attr after denoise.rec itd. NastÄ™pnie wygeneruje i zapisze do nich treÅ›Ä‡. ZawartoÅ›Ä‡ plikÃ³w powinna wyglÄ…daÄ‡ nastÄ™pujÄ…co:
 LP X Y RHO
 1. 0.00234 10.23493 2.784
 2. 3.24135 37.48272 2.828
@@ -10,7 +10,7 @@ LP: liczby od 1 do 50
 X: liczby typu float wylosowane z zakresu <0.0 - 10.0> z 5 miejscami po przecinku
 Y: liczby typu float wylosowane z zakresu <10.0 - 50.0> z 5 miejscami po przecinku
 RHO: liczby typu float wylosowane z zakresu <2.7 - 2.84 > z 3 miejscami po przecinku
-Program powinien mieæ funkcje/procedury.
+Program powinien mieÄ‡ funkcje/procedury.
 */
 
 #include <stdio.h>
@@ -55,7 +55,7 @@ int main()
     losujx(arrx);
     losujy(arry);
     losujrho(arrrho);
-    printf("Wybierz nazwe dla swojego pliku(do 15 znaków): ");
+    printf("Wybierz nazwe dla swojego pliku(do 15 znakÃ³w): ");
     scanf(" %[^\n]s", &nazwap);
     printf("Zapisano do:\n");
     for(int i=0; i<5; i++) {
